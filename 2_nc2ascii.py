@@ -1,5 +1,11 @@
 #!/nwpr/gfs/com120/.conda/envs/rd/bin/python
 '''
+Version
+    251009 patched: auto create the subdir (year) for output desPath
+    250418 more detailed logging added
+    250318 first version
+
+____
 SYNTAX
     ./2_nc2ascii.py [YYYYMMDD (reference date)]
 
@@ -139,7 +145,9 @@ def main():
             varName2 = 'OLRA'
         elif varName == 'u850':
             varName2 = 'U850'
-        return tt.float2format(REFDATE, f'{DESDIR}/%Y/%Y%m%d_CWBC_{varName2}_BSISO')
+        desPath = tt.float2format(REFDATE, f'{DESDIR}/%Y/%Y%m%d_CWBC_{varName2}_BSISO')
+        os.makedirs(os.path.dirname(desPath), exist_ok=True) # make the year subdir if needed
+        return desPath
 
     # ----- permission check
     if not os.access(DESDIR, os.W_OK):
