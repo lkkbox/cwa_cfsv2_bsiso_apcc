@@ -38,3 +38,4 @@ chmod 744 $runDir/*.sh
 # getting this 250128 file is necessary because the op source is missing
 mkdir -p $runDir/data/daymean/2025
 rsync -avu h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/3_op/data/daymean/2025/250128_*.nc $runDir/data/daymean/2025
+rsync -avu h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/2_clim_re_sata20/data/clim/3harm/* $runDir/data/clim_mod/

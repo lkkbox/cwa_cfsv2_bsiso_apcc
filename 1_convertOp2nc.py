@@ -215,6 +215,7 @@ def main():
             logging.info('  untarring files')
             for path in tarredSrcPaths:
                 runCommand(f'{TAR} -xvf {path} -C {TMPDIR}')
+                logging.info(f' {TAR} -xvf {path} -C {TMPDIR}  ')
 
         #
         # ---- check all grib2 files are located in (either linked or untarred to) the TMPDIR
@@ -280,6 +281,7 @@ def main():
         #
         # ---- setup
         logging.info(f'  {varName}: converting to nc')
+        logging.info(f'  {TMPDIR}/{varName}.grib2 ')
         srcPath = f'{TMPDIR}/{varName}.grib2'
         desPath = getDesPath(initTime, varName)
         cdoVarName = VARIABLES[varName]['cdoVarName']
@@ -314,6 +316,7 @@ def main():
         if not os.path.exists(path):
             isCompleted = False
             reason = 'file not found'
+            reason += f' {path} '
             return isCompleted, reason
 
         #
@@ -321,6 +324,7 @@ def main():
         if varName not in nct.getVarNames(path):
             isCompleted = False
             reason = 'varName not found'
+            reason += f' {path} '
             return isCompleted, reason
 
         #

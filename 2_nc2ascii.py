@@ -139,7 +139,7 @@ def main():
             varName2 = 'OLRA'
         elif varName == 'u850':
             varName2 = 'U850'
-        return tt.float2format(REFDATE, f'{DESDIR}/%Y/%Y%m%d_CWACFS2_0_{varName2}_BSISO')
+        return tt.float2format(REFDATE, f'{DESDIR}/%Y/%Y%m%d_CWBC_{varName2}_BSISO')
 
     # ----- permission check
     if not os.access(DESDIR, os.W_OK):
