@@ -13,7 +13,7 @@ runDir="$(dirname "$(realpath "$0")")"  # get the current directory as prefix
 # (daymean files are optional, but copying is much faster than processing them again)
 rsync -ruPavL \
         --exclude="tmps" --exclude="logs" --exclude="*.png" \
-        h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/3_op/ $runDir
+        h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/source/ $runDir
         # \ # --exclude="data/daymean" \
 
 
@@ -37,5 +37,5 @@ chmod 744 $runDir/*.sh
 
 # getting this 250128 file is necessary because the op source is missing
 mkdir -p $runDir/data/daymean/2025
-rsync -avu h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/3_op/data/daymean/2025/250128_*.nc $runDir/data/daymean/2025
+rsync -avu h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/source/data/daymean/2025/250128_*.nc $runDir/data/daymean/2025
 rsync -avu h6dm23:/nwpr/gfs/com120/7_CFS_BSISO_APCC/2_clim_re_sata20/data/clim/3harm/* $runDir/data/clim_mod/
